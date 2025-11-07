@@ -1,20 +1,3 @@
-// import express, { Request, Response, Application } from 'express'
-// require('dotenv').config()
-
-// const express = require('express')
-// const app = express()
-// const port = process.env.PORT || 4400
-
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
-
-// app.listen(port, () => {
-//   console.log(`Example app listening on port ${port}`)
-// })
-
-// startServer()
-
 import express, {Express, Request, Response, NextFunction} from "express";
 import dotenv from "dotenv";
 import { log } from "console";

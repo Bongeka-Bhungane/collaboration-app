@@ -11,6 +11,6 @@ export interface User {
     updatedAt: Date;
 }
 
-export type NewUser = Omit<User, "id" | "applied_at" | "updatedAt">;
+export type NewUser = Omit<User, "id" | "createdAt" | "updatedAt">;
 
 export type UpdateUser = Pick<User, "name" | "email" | "pictureUrl">;

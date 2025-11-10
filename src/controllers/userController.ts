@@ -33,7 +33,7 @@ export const deleteUSer = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     await pool.query("DELETE FROM users WHERE id =$1", [id]);
-    res.json({ message: "User deletef sucessfully" });
+    res.json({ message: "User deleted sucessfully" });
   } catch (error) {
     res.status(500).json({ error: "Failed to delete user!" });
   }

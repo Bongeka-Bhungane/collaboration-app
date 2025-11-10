@@ -5,24 +5,28 @@ import { generateToken } from "../utility/jwt";
 
 export const register = async (req: Request, res: Response) => {
     try {
+        console.log("request body: ", req.body);
+        
         const { name, email, password, role } = req.body
 
-        if (!name || !email || !password || !role) 
+        if ( !name || !email || !password || !role) 
             return res.status(400).json({message: "All fields are required!!"})
 
-        const existing = await pool.query("SELECT * FRPM users WHERE email = $1", [email]);
+        const existing = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
         if (existing.rows.length > 0)
             return res.status(400).json({message: "Email already in use!!"});
         
         const hashed = await bcrypt.hash(password, 10);
         const result = await pool.query(
-          `INSERT INTO users (name, email, password_hash , role) VALUES ($1, $2, $3, $4) RETURNING *`,
+          `INSERT INTO users ( name, email, password_hash , role) VALUES ($1, $2, $3, $4) RETURNING *`,
           [name, email, hashed, role]
         );
 
         res.status(200).json({user: result.rows[0]});
 
     } catch (error) {
+        console.log(error);
+        
         res.status(500).json({ error: "Registration failed" })
     }
 }
@@ -42,6 +46,8 @@ export const login = async (req: Request, res: Response) => {
         res.json({ token, user: {id: user.id, name: user.name, email: user.email, role: user.role } })
 
     } catch (error) {
+        console.log(error);
+        
         res.status(500).json({ error: "Login failed" })
     }
 }

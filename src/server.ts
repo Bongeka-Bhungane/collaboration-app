@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import { log } from "console";
 import e = require("express");
 import path = require("path");
+import bodyParser from "body-parser"
 import authRoutes from "./routes/authRoutes"
 import userRoutes from "./routes/userRoutes"
 
@@ -10,6 +11,9 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.APP_PORT || 3000;
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, 'public')));
 

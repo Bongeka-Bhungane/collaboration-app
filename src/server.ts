@@ -6,6 +6,7 @@ import path = require("path");
 import bodyParser from "body-parser"
 import authRoutes from "./routes/authRoutes"
 import userRoutes from "./routes/userRoutes"
+import projectRoutes from "./routes/projectRoutes"
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/projects", projectRoutes)
 
 app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));

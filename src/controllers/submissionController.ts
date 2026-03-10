@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { pool } from "pg";
+import { pool } from "../config/db";
 import { AuthRequest } from "../middleware/checkAuth";
 
 export const createSubmission = async (req: AuthRequest, res: Response) => {
@@ -28,3 +28,19 @@ export const createSubmission = async (req: AuthRequest, res: Response) => {
    res.status(500).json({ message: "Failed creating submission"}) 
   }
 };
+
+export const getSubmission = async (req:  AuthRequest, res: Response) => {
+    try {
+        const { id } = req.params;
+
+        const result = await pool.query(`SELECT * FROM submissions WHERE id = $1`, [id]);
+
+        if (!result.rows.length) return res.status(404).json({ message: "Submission not found" })
+
+            res.json(result.rows[0]);
+    } catch (error) {
+        console.log("Error fetching submission:", error);
+        res.status(500).json({ message: "Failed to fetch submission" })
+        
+    }
+}

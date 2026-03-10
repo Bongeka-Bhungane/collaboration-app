@@ -12,6 +12,7 @@ import projectRoutes from "./routes/projectRoutes";
 /* NEW */
 import submissionRoutes from "./routes/submissionRoutes";
 import commentRoutes from "./routes/commentRoutes";
+import reviewRoutes from "./routes/reviewRoutes";
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ app.use("/api/projects", projectRoutes);
 /* NEW ROUTES */
 app.use("/api/submissions", submissionRoutes);
 app.use("/api", commentRoutes);
+app.use("/api", reviewRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));

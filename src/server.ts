@@ -14,13 +14,20 @@ import projectStatsRoutes from "./routes/projectStatsRoutes";
 import { Server } from "socket.io";
 import http from "http";
 
+/* Error Middleware */
+import { errorHandler } from "./middleware/errorMiddleware";
+
 dotenv.config();
 
 const app = express();
 const PORT = process.env.APP_PORT || 3000;
 
+/* Body parsers */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+/* Serve static files */
+app.use(express.static(path.join(__dirname, "public")));
 
 /* Routes */
 app.use("/api/auth", authRoutes);
@@ -32,6 +39,7 @@ app.use("/api", reviewRoutes);
 app.use("/api", notificationRoutes);
 app.use("/api", projectStatsRoutes);
 
+/* Home page */
 app.get("/", (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
@@ -64,6 +72,9 @@ io.on("connection", (socket) => {
     console.log("User disconnected:", socket.id);
   });
 });
+
+/* Error handling middleware - MUST be after all routes */
+app.use(errorHandler);
 
 /* Start server */
 server.listen(PORT, () => {

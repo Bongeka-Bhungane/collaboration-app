@@ -29,12 +29,12 @@ npm install
 Configure .env file:
 ```
 DB_USER=postgres
-DB_PASSWORD=your_password
+DB_PASSWORD=$$Dut010322
 DB_HOST=localhost
 DB_DATABASE=collaborative_app
 DB_PORT=5432
 APP_PORT=3000
-JWT_SECRET=your_jwt_secret
+JWT_SECRET=jggfdsrryryjhghjufkjfku
 ```
 Run the server:
 ```

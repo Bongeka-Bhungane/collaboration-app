@@ -1,3 +1,5 @@
+<img src="https://socialify.git.ci/Bongeka-Bhungane/collaboration-app/image?description=1&font=Raleway&language=1&name=1&owner=1&pattern=Circuit+Board&theme=Light" alt="collaboration-app" width="640" height="320" />
+
 # Collaborative Code Review Platform
 
 A REST API-driven service that enables developers and teams to post code snippets, request feedback, and collaborate on reviews in real-time. Includes authentication, project management, code submissions, inline comments, review workflow, notifications, and analytics.

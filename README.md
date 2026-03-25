@@ -31,7 +31,7 @@ npm install
 Configure .env file:
 ```
 DB_USER=postgres
-DB_PASSWORD=$$Dut010322
+DB_PASSWORD=your password
 DB_HOST=localhost
 DB_DATABASE=collaborative_app
 DB_PORT=5432

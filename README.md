@@ -46,6 +46,14 @@ npm run dev
 ---
 
 ## API Endpoints
+
+## Authentication
+
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| POST   | `/api/auth/register` | Register new user |
+| POST   | `/api/auth/login` | Login user and receive JWT |
+
 ## Users
 
 | Method | Endpoint | Description |

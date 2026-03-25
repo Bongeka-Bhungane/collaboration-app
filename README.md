@@ -31,7 +31,7 @@ npm install
 Configure .env file:
 ```
 DB_USER=postgres
-DB_PASSWORD=$$Dut010322
+DB_PASSWORD=your password
 DB_HOST=localhost
 DB_DATABASE=collaborative_app
 DB_PORT=5432
@@ -46,6 +46,14 @@ npm run dev
 ---
 
 ## API Endpoints
+
+## Authentication
+
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| POST   | `/api/auth/register` | Register new user |
+| POST   | `/api/auth/login` | Login user and receive JWT |
+
 ## Users
 
 | Method | Endpoint | Description |

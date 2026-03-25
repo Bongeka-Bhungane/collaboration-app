@@ -9,6 +9,7 @@ import commentRoutes from "./routes/commentRoutes";
 import reviewRoutes from "./routes/reviewRoutes";
 import notificationRoutes from "./routes/notificationRoutes";
 import projectStatsRoutes from "./routes/projectStatsRoutes";
+import { initDb } from "./config/initDB";
 
 /* Socket.IO */
 import { Server } from "socket.io";
@@ -21,6 +22,8 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.APP_PORT || 3000;
+
+initDb();
 
 /* Body parsers */
 app.use(express.json());

@@ -3,6 +3,8 @@ import { pool } from "../config/db";
 import bcrypt from "bcryptjs";
 import { generateToken } from "../utility/jwt";
 
+
+
 export const register = async (req: Request, res: Response) => {
     try {
         console.log("request body: ", req.body);
